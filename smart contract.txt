@@ -1,0 +1,178 @@
+// SPDX-License-Identifier: Unlicensed
+
+pragma solidity ^0.8.0;
+
+contract Bank{
+    address public accHolder;
+    uint256 balance = 0;
+    
+    constructor(){
+        accHolder = msg.sender;
+    }
+
+    
+
+    function withdraw() payable public{
+        
+        require(msg.sender == accHolder, "You are not the account Holder");
+
+        require(balance > 0 , "You don't have enough balance.");
+        payable(msg.sender).transfer(balance);
+        balance = 0;
+
+    }
+
+    function deposite() public payable {
+        require(msg.value > 0 , " Deposite amount should be greater than 0.");
+        require(msg.sender == accHolder, "You are not the account Holder");
+        balance += msg.value;
+    }
+     
+    function showBalance()  public view returns (uint){
+        require(msg.sender == accHolder, "You are not the account Holder");
+        return balance;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Blockchain is a decentralized digital ledger that records transactions across a network of computers. Each block contains data and is securely linked to the previous one, forming an immutable chain. This structure provides transparency, security, and eliminates the need for a central authority.
+
+
+This is a simple smart contract for a basic bank account using Solidity.
+
+1. **SPDX License**: Declares the contract as unlicensed.
+
+2. **State Variables**:
+   - `accHolder`: Stores the account holder's address (the contract deployer).
+   - `balance`: Tracks the account balance (initialized to 0).
+
+3. **Constructor**:
+   - Sets `accHolder` as the address that deploys the contract.
+
+4. **withdraw Function**:
+   - Ensures only the account holder can withdraw.
+   - Checks if `balance` is greater than 0.
+   - Transfers the entire `balance` to `accHolder` and sets `balance` to 0.
+
+5. **deposite Function**:
+   - Ensures the deposit amount (`msg.value`) is greater than 0.
+   - Verifies only the account holder can deposit.
+   - Adds the deposit amount to `balance`.
+
+6. **showBalance Function**:
+   - Ensures only the account holder can view the balance.
+   - Returns the current `balance`.
+
+Overall, this contract enables a designated account holder to deposit, withdraw, and view balance securely.
+
+
+ Ethereum is a decentralized platform that allows developers to build and deploy smart
+ contracts and decentralized applications (dApps). Unlike Bitcoin, which is primarily a digital
+ currency, Ethereum’s primary purpose is to support smart contracts and decentralized apps.
+ Ethereum uses Ether as its native cryptocurrency, and it operates on a Turing-complete
+ Ethereum Virtual Machine (EVM), allowing for more complex applications than Bitcoin.
+
+Smart contracts are self-executing contracts with the terms of the agreement directly written
+ into code. When predefined conditions are met, the contract automatically executes without
+ intermediaries. The main types of smart contracts are:
+ ● Financial Smart Contracts: Used for automating financial transactions such as
+ payments or loans.
+ ● Escrow Smart Contracts: Hold funds in a neutral account and release them when
+ specific conditions are met.
+ ● Supply Chain Smart Contracts: Automatically trigger actions like payments or
+ shipments when goods pass through certain checkpoints.
+
+Consensus algorithms are mechanisms that ensure all participants in a blockchain agree on
+ the state of the network
+
+Hyperledger is an open-source, collaborative blockchain framework designed for building enterprise-grade, permissioned blockchain networks. It provides tools and libraries for creating customized blockchain solutions with a focus on privacy and scalability.
